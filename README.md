@@ -20,9 +20,10 @@ This repository holds the documentation and client configuration only. The serve
 | Tool | Input | Returns |
 |---|---|---|
 | `check_ai_visibility` | `domain` (required), `language`: `en` (default) or `et` | Technical readiness for AI search: homepage, HTTPS, robots.txt, AI crawler access, sitemap, title, description, H1, canonical, noindex, Organization/Person structured data, JavaScript dependence, key pages, llms.txt; the three most important fixes; the latest public report of the domain (mentions out of all answers, citations of the company's own website) when one exists; a prefilled link to the full check on qqq.ee. |
+| `get_public_report` | `domain` (required), `language` | The latest public report of a domain, if someone has run the full check on qqq.ee: date, market and field, mentions in search-grounded AI answers, citations of the company's own website, results per AI engine, the questions asked, the most cited sources, other companies named and short answer excerpts, plus the link to the report page. Fetches nothing and asks no AI model. Without a report it says so and links the full check. |
 | `get_tool_info` | `language` | What the checker measures, its limits and the English and Estonian links. Fetches nothing. |
 
-Both tools are read-only. The full check of live AI answers (ChatGPT, Gemini, Perplexity) runs on qqq.ee, and every answer from the server links there.
+All three tools are read-only. The full check of live AI answers (ChatGPT, Gemini, Perplexity) runs on qqq.ee, and every answer from the server links there.
 
 ## Connect
 
@@ -93,7 +94,7 @@ Then ask, for example: *"Check the AI visibility of example.com."*
 | `check_ai_visibility` per IP address | 5 a day (UTC) |
 | `check_ai_visibility` in total | 300 a day |
 | Invalid domain | does not use up a check |
-| `get_tool_info`, `initialize`, `tools/list`, `ping` | no limit |
+| `get_public_report`, `get_tool_info`, `initialize`, `tools/list`, `ping` | no limit |
 | Request body | 16 KB, at most 10 messages in a batch |
 
 Only public websites are checked: IP addresses, localhost and internal hostnames are refused, and redirects are validated again.
@@ -103,7 +104,7 @@ Only public websites are checked: IP addresses, localhost and internal hostnames
 - The IP address is only the key of a daily counter; counters are deleted after two days.
 - Usage statistics (90 days): step, language, domain, status, country, duration. No IP address, no client name.
 - Headers, request bodies, MCP client details and keys are not logged.
-- An MCP check does not create a public report and sends nothing to AI models.
+- An MCP check does not create a public report and sends nothing to AI models. `get_public_report` only reads a report that is already public on qqq.ee.
 
 Full policy: https://qqq.ee/en/privacy-policy/
 
