@@ -27,6 +27,8 @@ All three tools are read-only. The full check of live AI answers (ChatGPT, Gemin
 
 ## Connect
 
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=qqq-ai-visibility&config=eyJ1cmwiOiJodHRwczovL3FxcS5lZS9tY3AifQ==) [![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_MCP_server-0098FF?logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=qqq-ai-visibility&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fqqq.ee%2Fmcp%22%7D)
+
 ### Claude (claude.ai, Claude Desktop)
 
 Settings → Connectors → Add custom connector → URL `https://qqq.ee/mcp`, no authentication.
@@ -68,6 +70,51 @@ Developer mode → Settings → Connectors → add a server with URL `https://qq
     }
   }
 }
+```
+
+### Windsurf
+
+Windsurf MCP config (Cascade → MCP servers → View raw config):
+
+```json
+{
+  "mcpServers": {
+    "qqq-ai-visibility": {
+      "serverUrl": "https://qqq.ee/mcp"
+    }
+  }
+}
+```
+
+### Gemini CLI
+
+```bash
+gemini mcp add --transport http qqq-ai-visibility https://qqq.ee/mcp
+```
+
+or `~/.gemini/settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "qqq-ai-visibility": {
+      "httpUrl": "https://qqq.ee/mcp"
+    }
+  }
+}
+```
+
+### OpenAI Codex CLI
+
+```bash
+codex mcp add qqq-ai-visibility --url https://qqq.ee/mcp
+```
+
+or `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.qqq-ai-visibility]
+url = "https://qqq.ee/mcp"
 ```
 
 ### Clients that only support stdio
