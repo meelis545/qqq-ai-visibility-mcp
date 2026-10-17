@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "qqq-ai-visibility": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://qqq.ee/mcp"]
+    }
+  }
+}

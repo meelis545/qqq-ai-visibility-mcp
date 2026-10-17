@@ -1,0 +1,25 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "ee.qqq/ai-visibility",
+  "title": "QQQ AI Visibility Checker",
+  "description": "Free AI visibility check: can AI crawlers read a site, and do ChatGPT, Gemini, Perplexity cite it?",
+  "version": "1.0.0",
+  "websiteUrl": "https://qqq.ee/en/mcp-server/",
+  "repository": {
+    "url": "https://github.com/meelis545/qqq-ai-visibility-mcp",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://qqq.ee/qqq-icon-400.png",
+      "mimeType": "image/png",
+      "sizes": ["400x400"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://qqq.ee/mcp"
+    }
+  ]
+}
