@@ -2,6 +2,8 @@
 
 # QQQ AI Visibility Checker: MCP server
 
+[![smithery badge](https://smithery.ai/badge/q-y0oi/ai-visibility)](https://smithery.ai/servers/q-y0oi/ai-visibility)
+
 Free AI visibility and GEO check for any website, inside Claude, ChatGPT, Cursor, VS Code and other MCP clients. It tells you whether AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended and others) may read a site, whether the site is technically ready for AI search, and what the latest public report says about brand mentions and citations in ChatGPT, Gemini and Perplexity answers.
 
 - **Server URL:** `https://qqq.ee/mcp`
