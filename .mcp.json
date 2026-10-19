@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "qqq-ai-visibility": {
+      "type": "http",
+      "url": "https://qqq.ee/mcp"
+    }
+  }
+}

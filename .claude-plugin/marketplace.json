@@ -1,0 +1,21 @@
+{
+  "name": "qqq-ai-visibility",
+  "owner": {
+    "name": "QQQ OÜ",
+    "email": "ai@qqq.ee",
+    "url": "https://qqq.ee/en/"
+  },
+  "metadata": {
+    "description": "QQQ AI Visibility Checker: free AI visibility and GEO check via the hosted QQQ MCP server.",
+    "version": "1.1.0"
+  },
+  "plugins": [
+    {
+      "name": "qqq-ai-visibility",
+      "source": "./",
+      "description": "Free AI visibility and GEO check for any website: whether AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended) can read it, its technical readiness for AI search, and the latest public report of brand mentions and citations in ChatGPT, Gemini and Perplexity. Connects to the hosted QQQ server, no API key.",
+      "version": "1.1.0",
+      "strict": true
+    }
+  ]
+}

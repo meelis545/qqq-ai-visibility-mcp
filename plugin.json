@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "qqq-ai-visibility",
+  "version": "1.1.0",
+  "description": "Free AI visibility and GEO check for any website: whether AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended) can read it, its technical readiness for AI search, and the latest public report of brand mentions and citations in ChatGPT, Gemini and Perplexity. Connects to the hosted QQQ server, no API key.",
+  "author": {
+    "name": "QQQ OÜ",
+    "email": "ai@qqq.ee",
+    "url": "https://qqq.ee/en/"
+  },
+  "homepage": "https://qqq.ee/en/mcp-server/",
+  "repository": "https://github.com/meelis545/qqq-ai-visibility-mcp",
+  "license": "MIT",
+  "keywords": [
+    "ai-visibility",
+    "geo",
+    "aeo",
+    "seo",
+    "brand-monitoring",
+    "chatgpt",
+    "gemini",
+    "perplexity",
+    "mcp"
+  ]
+}

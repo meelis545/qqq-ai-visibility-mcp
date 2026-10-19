@@ -134,6 +134,14 @@ Use the `mcp-remote` bridge ([examples/claude-desktop-stdio.json](examples/claud
 
 Then ask, for example: *"Check the AI visibility of example.com."*
 
+## Plugins
+
+This repository is also a plugin for agents that install plugins from GitHub. It bundles the remote server config and a skill that tells the agent when to use each tool:
+
+- Claude Code: `/plugin marketplace add meelis545/qqq-ai-visibility-mcp`, then `/plugin install qqq-ai-visibility@qqq-ai-visibility` (`.claude-plugin/`, `.mcp.json`, `skills/`)
+- Cursor: `.cursor-plugin/plugin.json` and `mcp.json`
+- Agent Plugins (agent-plugins.org): `plugin.json` and `mcp.json`
+
 ## Limits
 
 | What | Limit |
