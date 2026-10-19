@@ -141,6 +141,7 @@ This repository is also a plugin for agents that install plugins from GitHub. It
 - Claude Code: `/plugin marketplace add meelis545/qqq-ai-visibility-mcp`, then `/plugin install qqq-ai-visibility@qqq-ai-visibility` (`.claude-plugin/`, `.mcp.json`, `skills/`)
 - Cursor: `.cursor-plugin/plugin.json` and `mcp.json`
 - Agent Plugins (agent-plugins.org): `plugin.json` and `mcp.json`
+- OpenClaw / ClawHub: `clawhub/qqq-ai-visibility/SKILL.md`, a skill that calls the same tools with `curl` (no MCP client needed)
 
 ## Limits
 
