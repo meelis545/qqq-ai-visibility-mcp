@@ -2,16 +2,17 @@
 
 # QQQ AI Visibility Checker: MCP server
 
-[![smithery badge](https://smithery.ai/badge/q-y0oi/ai-visibility)](https://smithery.ai/servers/q-y0oi/ai-visibility) [![AllMCPs Verified](https://allmcps.com/api/badge/qqq-ai-visibility-mcp)](https://allmcps.com/mcp/qqq-ai-visibility-mcp?verify=2890c9be-8656-43fd-9734-88e04d412a9b)
+[![smithery badge](https://smithery.ai/badge/q-y0oi/ai-visibility)](https://smithery.ai/servers/q-y0oi/ai-visibility) [![LightNow capabilities](https://lightnow.ai/badge/ee.qqq/ai-visibility)](https://lightnow.ai/servers/ee.qqq/ai-visibility) [![AllMCPs Verified](https://allmcps.com/api/badge/qqq-ai-visibility-mcp)](https://allmcps.com/mcp/qqq-ai-visibility-mcp?verify=2890c9be-8656-43fd-9734-88e04d412a9b)
 
-Free AI visibility and GEO check for any website, inside Claude, ChatGPT, Cursor, VS Code and other MCP clients. It tells you whether AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended and others) may read a site, whether the site is technically ready for AI search, and what the latest public report says about brand mentions and citations in ChatGPT, Gemini and Perplexity answers.
+Free AI visibility and GEO check for any website, inside Claude, ChatGPT, Cursor, VS Code and other MCP clients. It tells you whether AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended and others) may read a site, whether the site is technically ready for AI search, and what the latest public report says about brand mentions and citations in answers from ChatGPT, Gemini, Perplexity, Claude and Kimi.
 
-- **Server URL:** `https://qqq.ee/mcp`
+- **Server URL:** `https://qqq.ee/mcp` (use this exact host: `www.qqq.ee` redirects, and a redirect breaks POST requests)
 - **Transport:** Streamable HTTP (stateless JSON responses)
 - **Authentication:** none, no API key
 - **Registry name:** `ee.qqq/ai-visibility`
 - **Documentation:** https://qqq.ee/en/mcp-server/ (Estonian: https://qqq.ee/mcp-server/)
 - **Web tool:** https://qqq.ee/en/ai-visibility-checker/
+- **Changes:** [CHANGELOG.md](CHANGELOG.md)
 
 This repository holds the documentation and client configuration only. The server is hosted by QQQ OÜ on qqq.ee; there is nothing to install or run.
 
@@ -19,11 +20,29 @@ This repository holds the documentation and client configuration only. The serve
 
 | Tool | Input | Returns |
 |---|---|---|
-| `check_ai_visibility` | `domain` (required), `language`: `en` (default) or `et` | Technical readiness for AI search: homepage, HTTPS, robots.txt, AI crawler access, sitemap, title, description, H1, canonical, noindex, Organization/Person structured data, JavaScript dependence, key pages, llms.txt; the three most important fixes; the latest public report of the domain (mentions out of all answers, citations of the company's own website) when one exists; a prefilled link to the full check on qqq.ee. |
-| `get_public_report` | `domain` (required), `language` | The latest public report of a domain, if someone has run the full check on qqq.ee: date, market and field, mentions in search-grounded AI answers, citations of the company's own website, results per AI engine, the questions asked, the most cited sources, other companies named and short answer excerpts, plus the link to the report page. Fetches nothing and asks no AI model. Without a report it says so and links the full check. |
+| `check_ai_visibility` | `domain` (required), `language`: `en` (default) or `et` | Technical readiness for AI search: homepage, HTTPS, robots.txt, AI crawler access, sitemap, title, description, H1, canonical, noindex, Googlebot access, Organization/Person structured data, JavaScript dependence, key pages, llms.txt and whether the server really answers AI crawlers (the last two are informational); the three most important fixes; the latest public report of the domain (mentions out of all answers, citations of the company's own website) when one exists; a prefilled link to the full check on qqq.ee. |
+| `get_public_report` | `domain` (required), `language` | The latest public report of a domain, if someone has run the full check on qqq.ee: date, market and field or buyer phrase, mentions in search-grounded AI answers, citations of the company's own website, results per AI engine, the questions asked, the most cited sources by kind, other companies named and short answer excerpts, plus the link to the report page ([what a report contains](#what-a-public-report-contains)). Fetches nothing and asks no AI model. Without a report it says so and links the full check. |
 | `get_tool_info` | `language` | What the checker measures, its limits and the English and Estonian links. Fetches nothing. |
 
-All three tools are read-only. The full check of live AI answers (ChatGPT, Gemini, Perplexity) runs on qqq.ee, and every answer from the server links there.
+All three tools are read-only. The full check of live AI answers runs on qqq.ee, and every answer from the server links there.
+
+## What a public report contains
+
+`get_public_report` returns readable text and the same data as `structuredContent.report`. Reports are stored as they were measured, so an older report has fewer fields: a missing field means the report predates it, not zero.
+
+| Field | Meaning |
+|---|---|
+| `mentions` | Of the answers that searched the web: how many named the company, how many recommended it, and how many cited its website without naming it (`citedNotNamed`). |
+| `citations` | How many answers cited the company's own website. `consultedNotCited` counts answers whose search found the website but did not use it, only for engines that show every page they looked at. |
+| `engines`, `answers` | Results per engine and short excerpts: Gemini, Perplexity, Claude, Kimi and ChatGPT through their APIs, and Llama from model memory, which is a separate comparison. `outcome` says whether an answer recommended, named or cited the company, or did neither. |
+| `chatgptWeb` | The same buyer questions asked on chatgpt.com: answers that named the company, answers that cited its website, answers received, answers still pending. Reported apart and never added to `mentions` or `citations`. |
+| `questions` | The buyer questions asked. `ownPage` says whether the company's own page was a source (`cited`), was found but not used (`consulted`), was not found (`none`), or cannot be told (`unknown`). |
+| `sources` | The most cited domains. `kind` and `byKind` sort them into own website, media, directory, community, public sector and other. |
+| `topic` | The buyer phrase the questions were built from, with its monthly Google search volume in Estonia. |
+| `google` | For the field's buyer query: whether Google showed an AI Overview, whether the company's website was among its references, and its organic top 10 position. Not an AI answer. |
+| `competitorsYours` | When the person running the check named their own competitors: counts only. The names stay in that person's private link and never appear in a public report or through this server. |
+
+There is no combined score: mentions, citations and technical readiness stay separate.
 
 ## Connect
 
@@ -147,7 +166,7 @@ This repository is also a plugin for agents that install plugins from GitHub. It
 
 | What | Limit |
 |---|---|
-| `check_ai_visibility` per IP address | 5 a day (UTC) |
+| `check_ai_visibility` per IP address (per calling site for Cloudflare Workers) | 5 a day (UTC) |
 | `check_ai_visibility` in total | 300 a day |
 | Invalid domain | does not use up a check |
 | `get_public_report`, `get_tool_info`, `initialize`, `tools/list`, `ping` | no limit |
@@ -157,7 +176,7 @@ Only public websites are checked: IP addresses, localhost and internal hostnames
 
 ## Privacy
 
-- The IP address is only the key of a daily counter; counters are deleted after two days.
+- The IP address is only the key of a daily counter; counters are deleted after two days. Calls from Cloudflare Workers all share one Cloudflare address, so for them the key is the calling site's domain, which Cloudflare adds to the request.
 - Usage statistics (90 days): step, language, domain, status, country, duration. No IP address, no client name.
 - Headers, request bodies, MCP client details and keys are not logged.
 - An MCP check does not create a public report and sends nothing to AI models. `get_public_report` only reads a report that is already public on qqq.ee.
