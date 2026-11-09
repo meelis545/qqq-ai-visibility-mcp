@@ -46,7 +46,7 @@ There is no combined score: mentions, citations and technical readiness stay sep
 
 ## Connect
 
-[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=qqq-ai-visibility&config=eyJ1cmwiOiJodHRwczovL3FxcS5lZS9tY3AifQ==) [![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_MCP_server-0098FF?logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=qqq-ai-visibility&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fqqq.ee%2Fmcp%22%7D)
+[![Add to Cursor](https://img.shields.io/badge/Cursor-Add_MCP_server-000000?logo=cursor&logoColor=white)](https://cursor.com/install-mcp?name=qqq-ai-visibility&config=eyJ1cmwiOiJodHRwczovL3FxcS5lZS9tY3AifQ==) [![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_MCP_server-0098FF?logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=qqq-ai-visibility&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fqqq.ee%2Fmcp%22%7D)
 
 ### Claude (claude.ai, Claude Desktop)
 
