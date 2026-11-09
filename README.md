@@ -10,8 +10,8 @@ Free AI visibility and GEO check for any website, inside Claude, ChatGPT, Cursor
 - **Transport:** Streamable HTTP (stateless JSON responses)
 - **Authentication:** none, no API key
 - **Registry name:** `ee.qqq/ai-visibility`
-- **Documentation:** https://qqq.ee/en/mcp-server/ (Estonian: https://qqq.ee/mcp-server/)
-- **Web tool:** https://qqq.ee/en/ai-visibility-checker/
+- **Documentation:** [qqq.ee/en/mcp-server](https://qqq.ee/en/mcp-server/) (Estonian: [qqq.ee/mcp-server](https://qqq.ee/mcp-server/))
+- **Web tool:** [Free AI visibility checker](https://qqq.ee/en/ai-visibility-checker/), the full check with live answers from ChatGPT, Gemini and Perplexity
 - **Changes:** [CHANGELOG.md](CHANGELOG.md)
 
 This repository holds the documentation and client configuration only. The server is hosted by QQQ OÜ on qqq.ee; there is nothing to install or run.
@@ -161,6 +161,7 @@ This repository is also a plugin for agents that install plugins from GitHub. It
 - Cursor: `.cursor-plugin/plugin.json` and `mcp.json`
 - Agent Plugins (agent-plugins.org): `plugin.json` and `mcp.json`
 - OpenClaw / ClawHub: `clawhub/qqq-ai-visibility/SKILL.md`, a skill that calls the same tools with `curl` (no MCP client needed)
+- LobeHub Marketplace: `lhm.plugin.json`, the listing manifest published with `@lobehub/market-cli`
 
 ## Limits
 
@@ -190,8 +191,17 @@ Full policy: https://qqq.ee/en/privacy-policy/
 - CORS open (`*`): no cookies or credentials are used
 - [`server.json`](server.json) is the entry in the official MCP Registry
 
+## About QQQ
+
+The checker is made by [QQQ](https://qqq.ee/en/), an SEO and AI visibility agency in Tallinn, Estonia, working since 2003.
+
+- [Free AI visibility checker](https://qqq.ee/en/ai-visibility-checker/): asks AI models buyer questions about your field and market and shows whether the answers name your company, which sources they cite, and which competitors appear. No account needed.
+- [AI visibility audit](https://qqq.ee/en/audit/): what ChatGPT, Gemini and Claude know about your company, what they rely on and where they get it wrong.
+- [AI search optimization (AIO and GEO)](https://qqq.ee/en/ai-search-optimization/): prompt mapping, entities, citation-ready content and measurement.
+- [Contact QQQ](https://qqq.ee/en/contact/) about an SEO or AI visibility engagement.
+
 ## Contact
 
-QQQ OÜ, Niine 11, 10414 Tallinn, Estonia · q@qqq.ee · https://qqq.ee/en/
+QQQ OÜ, Niine 11, 10414 Tallinn, Estonia · q@qqq.ee · [qqq.ee/en](https://qqq.ee/en/)
 
 QQQ OÜ is an SEO and AI search agency and is not affiliated with Invesco QQQ Trust or the Nasdaq ticker QQQ.
