@@ -1,5 +1,5 @@
 {
-  "identifier": "qqq-ai-visibility",
+  "identifier": "meelis545-qqq-ai-visibility-mcp",
   "name": "QQQ AI Visibility Checker",
   "version": "1.2.0",
   "description": "Free AI visibility and GEO check for any website: whether AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended) may read it, its technical readiness for AI search with the three most important fixes, and the latest public report of brand mentions and citations in answers from ChatGPT, Gemini, Perplexity, Claude and Kimi. Hosted Streamable HTTP server, no API key, read-only tools.",
