@@ -1,0 +1,118 @@
+{
+  "identifier": "qqq-ai-visibility",
+  "name": "QQQ AI Visibility Checker",
+  "version": "1.2.0",
+  "description": "Free AI visibility and GEO check for any website: whether AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended) may read it, its technical readiness for AI search with the three most important fixes, and the latest public report of brand mentions and citations in answers from ChatGPT, Gemini, Perplexity, Claude and Kimi. Hosted Streamable HTTP server, no API key, read-only tools.",
+  "author": "QQQ OÜ",
+  "authorUrl": "https://qqq.ee/en/",
+  "homepage": "https://qqq.ee/en/mcp-server/",
+  "cloudEndpoint": "https://qqq.ee/mcp",
+  "icon": "https://qqq.ee/qqq-icon-400.png",
+  "tags": [
+    "ai-visibility",
+    "geo",
+    "aeo",
+    "seo",
+    "brand-monitoring",
+    "chatgpt",
+    "gemini",
+    "perplexity",
+    "ai-search"
+  ],
+  "tools": [
+    {
+      "name": "check_ai_visibility",
+      "title": "Check AI visibility of a website",
+      "description": "Free AI visibility and GEO (generative engine optimization) check for a company website by QQQ (qqq.ee). Checks whether AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended ...) may read the site, plus robots.txt, sitemap, Organization structured data, indexability and llms.txt, and returns the latest public report of brand mentions and citations in ChatGPT, Gemini and Perplexity answers when the domain has been checked before. The full AI answer check (brand visibility in live AI answers) runs on qqq.ee: the result always includes a prefilled link. Limited to a few checks per day; read-only.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Public website domain or URL, for example example.com or https://www.example.com/. IP addresses and private hosts are refused.",
+            "maxLength": 253
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "en",
+              "et"
+            ],
+            "description": "Language of the answer and of the qqq.ee links: en (English, default) or et (Estonian)."
+          }
+        },
+        "required": [
+          "domain"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Check AI visibility of a website",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_public_report",
+      "title": "Get the public AI visibility report of a domain",
+      "description": "Returns the latest public AI visibility report of a domain from QQQ (qqq.ee), when someone has already run the full check on qqq.ee: report date, market and field, in how many search-grounded ChatGPT, Gemini, Perplexity and Claude answers the company was named, how often its own website was cited, a summary per AI engine, the questions asked, the cited source domains and short answer excerpts, plus the link to the report page. Reads the stored report only: no website is fetched, no AI model is asked and no new report is created. Without a report, says so and links the full check on qqq.ee. Read-only, no limit.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Website domain or URL, for example example.com or https://www.example.com/.",
+            "maxLength": 253
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "en",
+              "et"
+            ],
+            "description": "Language of the answer and of the qqq.ee links: en (English, default) or et (Estonian)."
+          }
+        },
+        "required": [
+          "domain"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Get the public AI visibility report of a domain",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_tool_info",
+      "title": "About the QQQ AI Visibility Checker",
+      "description": "Describes the free QQQ AI Visibility Checker (qqq.ee): what it measures (brand mentions and website citations in ChatGPT, Gemini and Perplexity answers, AI crawler access, technical readiness for AI search / GEO), its limits, and the English and Estonian links to the web tool and full reports. No cost, no website is fetched.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "enum": [
+              "en",
+              "et"
+            ],
+            "description": "Language of the answer and of the qqq.ee links: en (English, default) or et (Estonian)."
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "About the QQQ AI Visibility Checker",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    }
+  ]
+}
